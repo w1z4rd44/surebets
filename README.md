@@ -1,2 +1,2 @@
 # surebets
-Scraping matches and odds from various bookmakers and checking for surebets
+Scraping matches and odds from Fortuna and GetsBet (bookmakers) and checking for surebets
