@@ -22,6 +22,9 @@ sporturi = ['fotbal','tenis']
 miza = 1000
 sb = pd.DataFrame()
 
+options = Options()
+options.headless = True 
+
 def scroll_to_bottom(driver):
     old_position = 0
     new_position = None
@@ -57,7 +60,7 @@ while True:
 
         for sport in sporturi:
             url = 'https://efortuna.ro/pariuri-online/'+ sport +'?selectDates=1&date=' + str(zi.year) + "-" + str('{:02d}'.format(zi.month)) + "-" + str('{:02d}'.format(zi.day))
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
             try:
                 driver.get(url)
             except:
@@ -129,7 +132,7 @@ while True:
                 url2 = 'https://sports2.getsbet.ro/ro/sport/darts/45/toate/0/locatie'
             elif sport == 'snooker':
                 url2 = 'https://sports2.getsbet.ro/ro/sport/snooker/36/toate/0/locatie'
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome(options=options)
             driver.get(url2)
             driver.maximize_window()
             wait = WebDriverWait(driver, 4)
