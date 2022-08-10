@@ -88,14 +88,14 @@ while True:
                     lista_competitii.append(section.get("data-competition-name"))
             sectiuni_bune = page_soup1.findAll("section", {"data-competition-name":lista_competitii}) 
             for sectiune_buna in sectiuni_bune:
-                if "running-live tablesorter-hasChildRow" in sectiune_buna:
-                    continue
-                else:
                     tabele_bune.append(sectiune_buna.findAll("div", {"class" : "events-table-box events-table-box--main-market"}))
             for tabel_bun in tabele_bune:
                 for row in tabel_bun:
-                    grupuri_cote.append(row.findAll("span",{"class":"odds-value"}))
-                    grupuri_evenimente.append(row.findAll("span",{"class":["market-name","event-name"]}))
+                    if "running-live tablesorter-hasChildRow" in row:
+                        continue
+                    else:
+                        grupuri_cote.append(row.findAll("span",{"class":"odds-value"}))
+                        grupuri_evenimente.append(row.findAll("span",{"class":["market-name","event-name"]}))
             for grup_cote in grupuri_cote:
                 for cota in grup_cote:
                     if cota.text.strip() == "":
